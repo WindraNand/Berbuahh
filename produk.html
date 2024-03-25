@@ -24,10 +24,11 @@
 <body>
     <!-- Tulis Kode Bootstrap Di Bawah Sini -->
 
-    <nav class="navbar navbar-dark bg-success navbar-expand-lg bisadicopy">
+    <nav class="navbar sticky-top navbar-dark bg-success navbar-expand-lg bisadicopy">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="images/logo/logo_kuy.png" height="40" alt="image">
+                <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_960_720.png" height="40"
+                    alt="image">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav11"
                 aria-controls="navbarNav11" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,51 +36,59 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav11">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html#best-seller">BestSeller</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#best-seller">Best Seller</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.html#review">Review</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#contact-us">Contact Us<a>
+                        <a class="nav-link" href="index.html#contact-us">Contact Us</a>
                     </li>
                 </ul>
                 <a target="_blank" class="btn btn-outline-light ms-md-3"
-                    href="https://wa.me/6281212345678?text=Halo saya mau pesan kopi">
-                    <i class="bi bi-whatsapp"></i>
+                    href="https://wa.me/6281291551234?text=halo kopi kuy saya mau pesan"><i class="bi bi-whatsapp"></i>
                     Chat</a>
             </div>
         </div>
     </nav>
 
-    <main>
-        <section class="produk text-center my-5 py-5">
-            <div class="container">
-                <h1>Yuk makan buah!</h1>
-                <p class="fs-4">Nikmati buah segar setiap saat.</p>
-                <hr class="border border-success border-3 opacity-75">
+    <section class="riki-block produk text-center my-5 py-5">
+        <div class="container">
+            <h1>Yuk Makan Buah!</h1>
+            <p class="fs-4">Buah segar dan enak dari petani lokal</p>
+            <hr class="border border-success border-3 opacity-75">
 
-                <!-- Ini Untuk Select -->
-                <div class="form-floating">
-                    <select class="form-select" id="select_kopi" aria-label="Floating label select example">
-                        <option selected disabled>-</option>
-                        <option value="buah">Buah</option>
-                        <option value="minuman">Minuman</option>
-
-                    </select>
-                    <label for="select_kopi">Pilih Produk</label>
+            <!-- Ini Untuk Select -->
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <select class="form-select" id="select_kopi">
+                            <option selected disabled>-</option>
+                            <option value="buah">Buah Segar</option>
+                            <option value="minuman">Jus Buah Premium</option>
+                        </select>
+                        <label for="select_kopi">Pilih Produk</label>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
+
+
+            <div id="baris_produk" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 text-center mt-5">
+
+            </div>
+        </div>
+
+
+
+    </section>
 
     <footer class="riki-block footer-small py-4 bg-success">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12 col-md-8">
                     <ul class="nav justify-content-center justify-content-md-start">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="index.html#best-seller">Best Seller</a>
                         </li>
                         <li class="nav-item">
@@ -92,11 +101,12 @@
                 </div>
 
                 <div class="col-12 col-md-4 mt-4 mt-md-0 text-center text-md-right">
-                    © 2023 Riki &amp; Froala . All Rights Reserved
+                    &copy; 2024 Berbuahh &amp; Tim . All Rights Reserved
                 </div>
             </div>
         </div>
     </footer>
+
 
     <!-- Batas Akhir penulisan kode Bootstrap -->
     <script>
@@ -111,43 +121,42 @@
             var online = "https://rikikurnia.com/prakerja/api/kopi"
             var offline = "data.json"
             $.getJSON(offline).then(function (data) {
-                data_buah = data
-                console.log(data_buah)
+                data_kopi = data
+                console.log(data_kopi)
             })
 
         }
 
         function tampilkanData() {
-            data_pilihan = data_buah[pilihan]
+            data_pilihan = data_kopi[pilihan]
             console.log("dapil", data_pilihan)
             baris_produk.innerHTML = ""
 
-            data_pilihan.forEach(buah => {
+            data_pilihan.forEach(kopi => {
                 baris_produk.innerHTML += `<div class="col mb-4">
                         <div class="card">
-                            <img src="${buah.foto}"
+                            <img src="${kopi.foto}"
                                 class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">${buah.nama}</h5>
+                                <h5 class="card-title">${kopi.nama}</h5>
                                 <div class="row hargasize my-4">
                                     <div class="col">
-                                        ${b.size}
+                                        ${kopi.size}
                                     </div>
                                     <div class="col text-success fw-bold">
-                                        ${buah.harga}
+                                        ${kopi.harga}
                                     </div>
                                 </div>
-                                <a href="${buah.link}" class="btn btn-success w-100">
+                                <a href="${kopi.link}" class="btn btn-success w-100">
                                     <i class="bi bi-cart-check"></i> Beli</a>
                             </div>
                         </div>
                     </div>`
             })
-
         }
 
-        select_buah.onchange = function () {
-            pilihan = select_buah.value
+        select_kopi.onchange = function () {
+            pilihan = select_kopi.value
             console.log(pilihan)
             tampilkanData()
         }
